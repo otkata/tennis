@@ -1,16 +1,25 @@
-package tennis.domain.models.service;
+package tennis.domain.models.view;
 
 import java.util.Set;
 
-public class UserServiceModel extends BaseServiceModel {
+public class UserAllViewModel {
 
+    private String id;
     private String username;
     private String password;
     private String email;
 
-    private Set<RoleServiceModel> authorities;
+    private Set<String> authorities;
 
-    public UserServiceModel() {
+    public UserAllViewModel() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -37,11 +46,11 @@ public class UserServiceModel extends BaseServiceModel {
         this.email = email;
     }
 
-    public Set<RoleServiceModel> getAuthorities() {
+    public Set<String> getAuthorities() {
         return authorities;
     }
 
-    public void setAuthorities(Set<RoleServiceModel> authorities) {
+    public void setAuthorities(Set<String> authorities) {
         this.authorities = authorities;
     }
 }
