@@ -12,13 +12,13 @@ import javax.persistence.MappedSuperclass;
 public abstract class BaseEntity {
     private String id;
 
-    public BaseEntity() {
+    protected BaseEntity() {
     }
 
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "id", nullable = false, unique = true, updatable = false)
+  //  @Column(name = "id", nullable = false, unique = true, updatable = false)
     public String getId() {
         return this.id;
     }
