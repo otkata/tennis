@@ -1,0 +1,52 @@
+<th:block th:fragment>
+    <nav class="navbar navbar-expand-lg re-background">
+        <a class="navbar-brand re-logo" th:href="@{/}">TennisFans</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <!--<li class="nav-item active">-->
+                    <!--<a class="nav-link text-white" th:href="@{/}">Home-->
+                        <!--<span class="sr-only">(current)</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ranking
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" th:href="@{/ranking/men}">Men</a>
+                        <a class="dropdown-item" th:href="@{/ranking/women}">Women</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white" th:href="@{/tournaments}">Tournaments </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link text-white" th:href="@{/news}">News </a>
+                </li>
+            </ul>
+            <div class="collapse navbar-collapse d-flex justify-content-between" >
+                <ul class="navbar-nav">
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/register}">Register</a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </nav>
+</th:block>
