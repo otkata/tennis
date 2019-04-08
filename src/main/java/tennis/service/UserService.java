@@ -1,10 +1,20 @@
 package tennis.service;
 
 
+import org.springframework.security.core.userdetails.UserDetailsService;
 import tennis.domain.models.service.UserServiceModel;
 
-public interface UserService {
-    boolean registerUser(UserServiceModel userServiceModel);
+import java.util.List;
 
-    UserServiceModel loginUser(UserServiceModel userServiceModel);
+public interface UserService extends UserDetailsService {
+
+    UserServiceModel registerUser(UserServiceModel userServiceModel);
+
+    UserServiceModel findUserByUserName(String username);
+
+    UserServiceModel editUserProfile(UserServiceModel userServiceModel, String oldPassword);
+
+    List<UserServiceModel> findAllUsers();
+
+    void setUserRole(String id, String role);
 }
