@@ -1,32 +1,39 @@
 package tennis.web.controllers;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-public class HomeController extends BaseController{
+public class HomeController extends BaseController {
+
+
+    private final ModelMapper modelMapper;
+
+    @Autowired
+    public HomeController(  ModelMapper modelMapper) {
+
+        this.modelMapper = modelMapper;
+    }
 
     @GetMapping("/")
-    public ModelAndView home(){
+    @PreAuthorize("isAnonymous()")
+    public ModelAndView index() {
         return super.view("index");
     }
 
     @GetMapping("/home")
-    public ModelAndView home(ModelAndView modelAndView, HttpSession session){
-        if(session.getAttribute("username") == null) {
-            modelAndView.setViewName("redirect:/login");
-        } else {
+    @PreAuthorize("isAuthenticated()")
+    public ModelAndView home(ModelAndView modelAndView) {
 
 
-            modelAndView.setViewName("home");
-
-        }
-
-        return modelAndView;
+        return super.view("home", modelAndView);
     }
 }
+
