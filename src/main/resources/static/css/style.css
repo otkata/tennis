@@ -1,17 +1,28 @@
-.re-background{
-    background-color: #78912d;
-    color: white;
+hr.hr-2 {
+    height: 2px;
 }
 
-.navbar-toggler-icon {
-    background-color: #fdffa3;
+.logout-button {
+    background: transparent;
+    border: none;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 1) !important;
 }
 
-.all-viruses-background{
-    background-color: #fdffa3;
+.logout-button:hover {
+    cursor: pointer;
 }
 
-.re-logo{
-    background-color: #78912d;
-    color: #fdffa3;
+.logout-button:focus {
+    outline: none;
 }
+
+img.img-thumbnail {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px; /* Rounded border */
+    padding: 5px; /* Some padding */
+    max-width: 40px;
+    max-height: 40px;
+}
+
+
