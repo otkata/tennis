@@ -5,8 +5,8 @@ hr.hr-2 {
 .logout-button {
     background: transparent;
     border: none;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 1) !important;
+
+    color: white !important;
 }
 
 .logout-button:hover {
@@ -25,4 +25,35 @@ img.img-thumbnail {
     max-height: 40px;
 }
 
+.re-background{
+    background-color: #78912d;
+    color: white;
+}
+.re-logo{
+    background-color: #78912d;
+    color: #fdffa3;
+}
 
+.btn-success {
+    color: #fff;
+    background-color: #78912d;
+    border-color: #78912d;
+}
+.btn-secondary {
+    color: #fff;
+    background-color: #86b341;
+    border-color: #86b341;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #86b341;
+    border-color: #86b341;
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: #8ab842;
+    border-color: #8ab842;
+
+}
