@@ -61,7 +61,7 @@ public class TournamentController extends BaseController {
     }
 
     @GetMapping("/all")
-    @PreAuthorize("hasRole('ROLE_MODERATOR')")
+   // @PreAuthorize("hasRole('ROLE_MODERATOR')")
     public ModelAndView allTournaments(ModelAndView modelAndView) {
         modelAndView.addObject("tournaments", this.tournamentService.findAllTournaments()
                 .stream()
@@ -70,6 +70,9 @@ public class TournamentController extends BaseController {
 
         return super.view("tournament/all-tournaments", modelAndView);
     }
+
+
+
 
     @GetMapping("/details/{id}")
     @PreAuthorize("isAuthenticated()")

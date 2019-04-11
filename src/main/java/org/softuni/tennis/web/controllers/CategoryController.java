@@ -42,7 +42,7 @@ public class CategoryController extends BaseController {
     }
 
     @GetMapping("/all")
-    @PreAuthorize("hasRole('ROLE_MODERATOR')")
+  //  @PreAuthorize("hasRole('ROLE_MODERATOR')")
     public ModelAndView allCategories(ModelAndView modelAndView) {
         modelAndView.addObject("categories",
                 this.categoryService.findAllCategories()
@@ -53,6 +53,10 @@ public class CategoryController extends BaseController {
 
         return super.view("category/all-categories", modelAndView);
     }
+
+
+
+
 
     @GetMapping("/edit/{id}")
     @PreAuthorize("hasRole('ROLE_MODERATOR')")

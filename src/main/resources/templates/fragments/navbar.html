@@ -36,18 +36,38 @@
                     <li class="nav-item active">
                         <a class="nav-link text-white" th:href="@{/users/profile}">Profile</a>
                     </li>
+
+
+
                     <th:block sec:authorize="hasRole('ROLE_MODERATOR')">
                         <li class="nav-item active">
                             <div class="dropdown show">
-                                <a class="nav-link active dropdown-toggle text-white" href="#" role="button" id="moderatorDropdown"
+                                <a class="nav-link active dropdown-toggle text-white" href="#" role="button"
+                                   id="moderatorDropdown"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Moderator
+                                    Categories
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="moderatorDropdown">
                                     <a class="dropdown-item" th:href="@{/categories/add}">Add Category</a>
-                                    <a class="dropdown-item" th:href="@{/tournaments/add}">Add Tournament</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" th:href="@{/categories/all}">All Categories</a>
+
+                                </div>
+                            </div>
+                        </li>
+                    </th:block>
+
+                    <th:block sec:authorize="hasRole('ROLE_MODERATOR')">
+                        <li class="nav-item active">
+                            <div class="dropdown show">
+                                <a class="nav-link active dropdown-toggle text-white" href="#" role="button"
+                                   id="moderatorDropdown"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tournaments
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="moderatorDropdown">
+                                    <a class="dropdown-item" th:href="@{/tournaments/add}">Add Tournament</a>
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" th:href="@{/tournaments/all}">All Tournaments</a>
                                 </div>
                             </div>
@@ -57,9 +77,10 @@
                     <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                         <li class="nav-item active">
                             <div class="dropdown">
-                                <a class="nav-link active dropdown-toggle text-white" href="#" role="button" id="adminDropdown"
+                                <a class="nav-link active dropdown-toggle text-white" href="#" role="button"
+                                   id="adminDropdown"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Admin
+                                    Users
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="adminDropdown">
                                     <a class="dropdown-item" th:href="@{/users/all}">All Users</a>
