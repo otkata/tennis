@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.softuni.tennis.domain.entities.Category;
 import org.softuni.tennis.domain.entities.Tournament;
 import org.softuni.tennis.domain.models.service.TournamentServiceModel;
+import org.softuni.tennis.error.TournamentNotFoundException;
 import org.softuni.tennis.repository.TournamentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,13 +45,13 @@ public class TournamentServiceImpl implements TournamentService {
     public TournamentServiceModel findTournamentById(String id) {
         return this.tournamentRepository.findById(id)
                 .map(p -> this.modelMapper.map(p, TournamentServiceModel.class))
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(() -> new TournamentNotFoundException("Tournament not found!"));
     }
 
     @Override
     public TournamentServiceModel editTournament(String id, TournamentServiceModel tournamentServiceModel) {
         Tournament tournament = this.tournamentRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException());
+                .orElseThrow(() -> new TournamentNotFoundException("Tournament not found!"));
 
         tournamentServiceModel.setCategories(
                 this.categoryService.findAllCategories()
@@ -74,8 +75,7 @@ public class TournamentServiceImpl implements TournamentService {
 
     @Override
     public void deleteTournament(String id) {
-        Tournament tournament = this.tournamentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
-
+        Tournament tournament = this.tournamentRepository.findById(id).orElseThrow(() -> new TournamentNotFoundException("Tournament not found!"));
         this.tournamentRepository.delete(tournament);
     }
 
