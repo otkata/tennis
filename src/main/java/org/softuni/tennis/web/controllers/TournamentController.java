@@ -5,6 +5,7 @@ import org.softuni.tennis.domain.models.binding.TournamentAddBindingModel;
 import org.softuni.tennis.domain.models.service.TournamentServiceModel;
 import org.softuni.tennis.domain.models.view.TournamentAllViewModel;
 import org.softuni.tennis.domain.models.view.TournamentDetailsViewModel;
+import org.softuni.tennis.error.TournamentNotFoundException;
 import org.softuni.tennis.service.CategoryService;
 import org.softuni.tennis.service.CloudinaryService;
 import org.softuni.tennis.service.TournamentService;
@@ -138,6 +139,14 @@ public class TournamentController extends BaseController {
                 .stream()
                 .map(tournament -> this.modelMapper.map(tournament, TournamentAllViewModel.class))
                 .collect(Collectors.toList());
+    }
+
+    @ExceptionHandler({TournamentNotFoundException.class})
+    public ModelAndView handleTournamentNotFound(RuntimeException e){
+        ModelAndView modelAndView = new ModelAndView("error");
+        modelAndView.addObject("message", e.getMessage());
+
+        return modelAndView;
     }
 
 }
