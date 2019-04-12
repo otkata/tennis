@@ -37,6 +37,29 @@
                         <a class="nav-link text-white" th:href="@{/users/profile}">Profile</a>
                     </li>
 
+                    <li class="nav-item active">
+                        <a class="nav-link text-white" th:href="@{/home}">News</a>
+                    </li>
+
+
+
+                    <th:block sec:authorize="hasRole('ROLE_MODERATOR')">
+                        <li class="nav-item active">
+                            <div class="dropdown show">
+                                <a class="nav-link active dropdown-toggle text-white" href="#" role="button"
+                                   id="moderatorRanking"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Ranking
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="moderatorDropdown">
+                                    <a class="dropdown-item" th:href="@{/home}">Men</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" th:href="@{/home}">Women</a>
+
+                                </div>
+                            </div>
+                        </li>
+                    </th:block>
 
 
                     <th:block sec:authorize="hasRole('ROLE_MODERATOR')">
