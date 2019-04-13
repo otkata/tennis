@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="form-group">
+    <label for="edit-tournament-categories" class="font-weight-bold">Categories</label>
+    <select multiple="" class="form-control" id="edit-tournament-categories" name="categories">
+
+    </select>
+</div>
+<script>
+    fetch('/categories/fetch')
+        .then((response) => response.json())
+    .then((json) => {
+        let categories = [{"id":"bb1e9332-2637-4919-a882-cbd209e46721","name":"Health"}];
+    //let categories = [[${tournament.categories}]];
+    //  console.log(categories);
+    categories = categories.map(category => category.name);
+    console.log(categories);
+    json.forEach((category) =>
+    $('#edit-tournament-categories').append(
+        categories.includes(category.name)
+            ? `<option value="${category.id}" selected>${category.name}</option>`
+            : `<option value="${category.id}">${category.name}</option>`));
+    })
+    .catch((err) => console.log(err));
+</script>
+</body>
+</html>
