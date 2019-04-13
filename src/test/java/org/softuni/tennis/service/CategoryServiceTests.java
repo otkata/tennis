@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.modelmapper.ModelMapper;
+import org.softuni.tennis.domain.entities.Category;
 import org.softuni.tennis.domain.models.service.CategoryServiceModel;
 import org.softuni.tennis.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,5 +58,33 @@ public class CategoryServiceTests {
 
     }
 
+    @Test
+    public void categoryService_editCategoryCorrectValues_ReturnsCorrect(){
+        CategoryService categoryService = new CategoryServiceImpl(this.categoryRepository, this.modelMapper);
+
+        Category category = new Category();
+        category.setName("WTA");
+
+        category= this.categoryRepository.saveAndFlush(category);
+
+        CategoryServiceModel toBeEdited = new CategoryServiceModel();
+        toBeEdited.setId(category.getId());
+        toBeEdited.setName("Gosho");
+
+        CategoryServiceModel actual = categoryService.editCategory(category.getId(), toBeEdited);
+        CategoryServiceModel expected = this.modelMapper.map(this.categoryRepository.findAll().get(0), CategoryServiceModel.class);
+
+        Assert.assertEquals(expected.getId(), actual.getId());
+        Assert.assertEquals(expected.getName(), actual.getName());
+
+
+    }
+
+    @Test(expected = Exception.class)
+    public void categoryService_editCategoryNullValues_ThrowsException() {
+        CategoryService categoryService = new CategoryServiceImpl(this.categoryRepository, this.modelMapper);
+
+
+    }
 
     }
