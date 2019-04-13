@@ -141,12 +141,12 @@ public class TournamentController extends BaseController {
                 .collect(Collectors.toList());
     }
 
-    @ExceptionHandler({TournamentNotFoundException.class})
-    public ModelAndView handleTournamentNotFound(RuntimeException e){
-        ModelAndView modelAndView = new ModelAndView("error");
-        modelAndView.addObject("message", e.getMessage());
-
-        return modelAndView;
-    }
+//    @ExceptionHandler({TournamentNotFoundException.class})
+//    public ModelAndView handleTournamentNotFound(RuntimeException e){
+//        ModelAndView modelAndView = new ModelAndView("error");
+//        modelAndView.addObject("message", e.getMessage());
+//
+//        return modelAndView;
+//    }
 
 }
