@@ -84,6 +84,44 @@ public class CategoryServiceTests {
     public void categoryService_editCategoryNullValues_ThrowsException() {
         CategoryService categoryService = new CategoryServiceImpl(this.categoryRepository, this.modelMapper);
 
+        Category category = new Category();
+        category.setName("WTA");
+
+        category= this.categoryRepository.saveAndFlush(category);
+
+        CategoryServiceModel toBeEdited = new CategoryServiceModel();
+        toBeEdited.setId(category.getId());
+        toBeEdited.setName(null);
+
+        categoryService.editCategory(category.getId(), toBeEdited);
+    }
+
+    @Test
+    public void categoryService_deleteCategoryCorrectValues_ReturnsCorrect(){
+        CategoryService categoryService = new CategoryServiceImpl(this.categoryRepository, this.modelMapper);
+
+        Category category = new Category();
+        category.setName("WTA");
+
+        category = this.categoryRepository.saveAndFlush(category);
+
+        categoryService.deleteCategory(category.getId());
+        long expectedCount = 0;
+        long actualCount = this.categoryRepository.count();
+
+        Assert.assertEquals(expectedCount, actualCount);
+    }
+
+    @Test(expected = Exception.class)
+    public void categoryService_deleteInvalidValues_ThrowsException() {
+        CategoryService categoryService = new CategoryServiceImpl(this.categoryRepository, this.modelMapper);
+
+        Category category = new Category();
+        category.setName("WTA");
+
+        category= this.categoryRepository.saveAndFlush(category);
+
+        categoryService.deleteCategory("InvalidId");
 
     }
 
